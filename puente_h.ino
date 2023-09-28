@@ -6,15 +6,29 @@
 void setup() {
   pinMode(MotorSH,OUTPUT);
   pinMode(MotorSAH,OUTPUT);
+  pinMode(pulsadorSH,INPUT);
+  pinMode(pulsadorSAH,INPUT);  
   pinMode(LED_BUILTIN,OUTPUT); // LED de verificación para los pulsadores  
 }
 
 void loop() {
+// Inicio de pruebas  
   prueba_motor(); // Función de prueba para verificar el funcionamiento de los motores, se puede eliminar una vez verificado
-
-
+  prueba_pulsadores(); // Función de prueba para verificar el funcionamiento de los pulsadores, se puede eliminar una vez verificado
+// Fin de pruebas
+/* Eliminar esta linea para probar funcionamiento conjunto
+  if (boton_sh == HIGH){
+    digitalWrite(MotorSH,HIGH);
+    digitalWrite(MotorSAH,LOW);
+  else if (boton_sah == HIGH){
+    digitalWrite(MotorSH,LOW);
+    digitalWrite(MotorSAH,HIGH);    
+  }  
+  }
+Eliminar esta linea para probar funcionamiento conjunto */ 
 }
 
+/* NO ELIMINAR las siguientes líneas */
 // Función de prueba de los motores
 void prueba_motor(){
   // Sentido horario
@@ -30,5 +44,8 @@ void prueba_motor(){
 }
 
 void prueba_pulsadores(){
-  
+  int boton_sh = digitalRead(pulsadorSH);
+  digitalWrite(MotorSH, boton_sh);
+  int boton_sah = digitalRead(pulsadorSAH);
+  digitalWrite(MotorSAH, boton_sah);    
 }
