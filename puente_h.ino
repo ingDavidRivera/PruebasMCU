@@ -3,6 +3,9 @@
 #define MotorSH 16
 #define MotorSAH 17
 
+int boton_sh = 0;
+int boton_sah = 0;
+
 void setup() {
   pinMode(MotorSH,OUTPUT);
   pinMode(MotorSAH,OUTPUT);
@@ -37,15 +40,15 @@ void prueba_motor(){
   digitalWrite(MotorSH,LOW);  // Apagar el motor en sentido antihorario
   delay(2000);                // Esperar 2 segundos
   // Sentido antihorario
-  digitalWrite(MotorSH,HIGH); // Activa el motor en sentido horario
+  digitalWrite(MotorSAH,HIGH); // Activa el motor en sentido horario
   delay(2000);                // Esperar 2 segundos
-  digitalWrite(MotorSH,LOW);  // Apagar el motor en sentido horario
+  digitalWrite(MotorSAH,LOW);  // Apagar el motor en sentido horario
   delay(2000);                // Esperar 2 segundos
 }
 
 void prueba_pulsadores(){
-  int boton_sh = digitalRead(pulsadorSH);
+  boton_sh = digitalRead(pulsadorSH);
   digitalWrite(MotorSH, boton_sh);
-  int boton_sah = digitalRead(pulsadorSAH);
+  boton_sah = digitalRead(pulsadorSAH);
   digitalWrite(MotorSAH, boton_sah);    
 }
